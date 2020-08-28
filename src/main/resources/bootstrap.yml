@@ -1,0 +1,16 @@
+spring:
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        default_schema: inv
+  datasource:
+    url: jdbc:postgresql://localhost:5432/erp
+    username: postgres
+    password: 12345
+  jackson:
+    date-format: dd-MM-yyyy
