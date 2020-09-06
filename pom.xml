@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.hafiz.erp</groupId>
-	<artifactId>inventory-service</artifactId>
+	<artifactId>requisition-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>inventory-service</name>
-	<description>Inventory service</description>
+	<name>requisition-service</name>
+	<description>Requisition service</description>
 
 	<properties>
 		<java.version>1.8</java.version>
