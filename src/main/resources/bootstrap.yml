@@ -1,4 +1,6 @@
 spring:
+  application:
+    name: req-service
   jpa:
     show-sql: true
     hibernate.ddl-auto: validate
@@ -14,3 +16,13 @@ spring:
     password: 12345
   jackson:
     date-format: dd-MM-yyyy
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    appname: req-service
+server:
+  port: 7001
