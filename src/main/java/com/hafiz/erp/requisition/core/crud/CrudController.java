@@ -24,7 +24,13 @@ public abstract class CrudController<E extends BaseEntity, R extends IdHolder, C
 
     @PostMapping
     public R create(@RequestBody C d) {
-        return conversionUtility.getDto(service.create(conversionUtility.buildEntity(Optional.of(d)))).orElse(null);
+        return conversionUtility.getDto(
+            Optional.ofNullable(
+                service.create(
+                    conversionUtility.buildEntity(Optional.of(d))
+                )
+            )
+        ).orElse(null);
     }
 
     @PutMapping("{id}")

@@ -24,15 +24,15 @@ public abstract class CrudService<E extends BaseEntity> implements ICrudService<
     }
 
     @Override
-    public Optional<E> create(Optional<E> entity) {
+    public E create(Optional<E> entity) {
+        if(!entity.isPresent()) return entity.get();
         E createdEntity = null;
         entity.ifPresent(e -> e.setId(null));
         if(entity.isPresent()) {
             entity = this.getEntity(entity.get());
             createdEntity = repository.save(entity.get());
         }
-        assert createdEntity != null;
-        return Optional.of(createdEntity);
+        return createdEntity;
     }
 
     @Override

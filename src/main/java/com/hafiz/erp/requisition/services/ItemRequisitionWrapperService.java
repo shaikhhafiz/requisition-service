@@ -24,8 +24,8 @@ public class ItemRequisitionWrapperService {
     @Transactional
     public ItemRequisitionResponseDTO createRequisitionWithDetails(ItemRequisitionCreateDTO d){
         Optional<ItemRequisitionResponseDTO> dto = conversionUtility.getDto(
-                service.create(
-                        conversionUtility.buildEntity(Optional.of(d))));
+            Optional.ofNullable(service.create(
+                conversionUtility.buildEntity(Optional.of(d)))));
         dto.ifPresent(itemRequisitionResponseDTO -> itemRequisitionResponseDTO.setDetails(
                 new HashSet<>(detailConversionUtility.getDtoList(
                         detailService.createAll(

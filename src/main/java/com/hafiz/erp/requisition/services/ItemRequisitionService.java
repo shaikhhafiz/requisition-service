@@ -6,7 +6,7 @@ import com.hafiz.erp.requisition.repositories.ItemRequisitionRepository;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ItemRequisitionService extends CrudService<ItemRequisition> {
+public class ItemRequisitionService extends CrudService<ItemRequisition> implements IItemRequisitionService{
 
     public ItemRequisitionService(ItemRequisitionRepository repository) {
         super(repository);
