@@ -16,8 +16,19 @@ spring:
     password: 12345
   jackson:
     date-format: dd-MM-yyyy
+  kafka:
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      transaction-id-prefix: tx.
+    consumer:
+      properties:
+        isolation.level: read_committed
+    listener:
+      type: batch
+    bootstrap-servers: 192.168.0.112:9092
 eureka:
   client:
+    enabled: false
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
     healthcheck:
