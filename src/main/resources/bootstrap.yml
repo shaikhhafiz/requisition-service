@@ -23,9 +23,9 @@ spring:
     consumer:
       properties:
         isolation.level: read_committed
-    listener:
-      type: batch
-    bootstrap-servers: 192.168.0.112:9092
+#    listener:
+#      type: batch
+    bootstrap-servers: 192.168.0.105:9092
 eureka:
   client:
     enabled: false
