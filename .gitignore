@@ -1,3 +1,4 @@
+/src/main/resources/bootstrap.yml
 HELP.md
 target/
 .mvn/**
