@@ -1,7 +1,6 @@
 package com.hafiz.erp.requisition.services;
 
-import com.hafiz.erp.requisition.dataclass.ItemRequisitionCreateDTO;
-import com.hafiz.erp.requisition.dataclass.ItemRequisitionResponseDTO;
+import com.hafiz.erp.requisition.dataclass.ItemRequisitionDTO;
 import com.hafiz.erp.requisition.utility.ItemRequisitionConversionUtility;
 import com.hafiz.erp.requisition.utility.ItemRequisitionDetailConversionUtility;
 import lombok.RequiredArgsConstructor;
@@ -22,8 +21,8 @@ public class ItemRequisitionWrapperService {
 
 
     @Transactional
-    public ItemRequisitionResponseDTO createRequisitionWithDetails(ItemRequisitionCreateDTO d){
-        Optional<ItemRequisitionResponseDTO> dto = conversionUtility.getDto(
+    public ItemRequisitionDTO createRequisitionWithDetails(ItemRequisitionDTO d){
+        Optional<ItemRequisitionDTO> dto = conversionUtility.getDto(
             Optional.ofNullable(service.create(
                 conversionUtility.buildEntity(Optional.of(d)))));
         dto.ifPresent(itemRequisitionResponseDTO -> itemRequisitionResponseDTO.setDetails(

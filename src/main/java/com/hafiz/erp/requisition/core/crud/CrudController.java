@@ -9,21 +9,21 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RequiredArgsConstructor
-public abstract class CrudController<E extends BaseEntity, R extends IdHolder, C, U extends IdHolder> {
+public abstract class CrudController<E extends BaseEntity, D extends IdHolder> {
     private final CrudService<E> service;
-    private final ConversionUtility<E, R> conversionUtility;
+    private final ConversionUtility<E, D> conversionUtility;
     @GetMapping
-    public List<R> getList() {
+    public List<D> getList() {
         return conversionUtility.getDtoList(service.getList());
     }
 
     @GetMapping("{id}")
-    public R getById(@PathVariable UUID id){
+    public D getById(@PathVariable UUID id){
         return conversionUtility.getDto(service.getById(id)).orElse(null);
     }
 
     @PostMapping
-    public R create(@RequestBody C d) {
+    public D create(@RequestBody D d) {
         return conversionUtility.getDto(
             Optional.ofNullable(
                 service.create(
@@ -34,7 +34,7 @@ public abstract class CrudController<E extends BaseEntity, R extends IdHolder, C
     }
 
     @PutMapping("{id}")
-    public R update(@RequestBody U d, @PathVariable UUID id) {
+    public D update(@RequestBody D d, @PathVariable UUID id) {
         Optional<E> e = service.getById(id);
         d.setId(id);
         e.ifPresent(value -> BeanUtils.copyProperties(d, value));

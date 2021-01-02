@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Data
-public class ItemRequisitionDetailResponseDTO extends IdHolder {
+public class ItemRequisitionDetailDTO extends IdHolder {
     private UUID reqId;
     private BigDecimal qty;
     private UUID specValueId;
