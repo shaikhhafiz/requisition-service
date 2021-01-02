@@ -1,4 +1,4 @@
-/src/main/resources/bootstrap.yml
+
 HELP.md
 target/
 .mvn/**
@@ -6,6 +6,7 @@ mvnw
 mvnw.cmd
 !**/src/main/**
 !**/src/test/**
+/src/main/resources/bootstrap.yml
 
 ### STS ###
 .apt_generated
