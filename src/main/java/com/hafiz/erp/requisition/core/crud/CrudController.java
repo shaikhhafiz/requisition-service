@@ -1,7 +1,6 @@
 package com.hafiz.erp.requisition.core.crud;
 
 import com.hafiz.erp.requisition.validatorgroup.CreateValidatorGroup;
-import com.hafiz.erp.requisition.validatorgroup.UpdateValidatorGroup;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.validation.annotation.Validated;
@@ -37,7 +36,7 @@ public abstract class CrudController<E extends BaseEntity, D extends IdHolder> {
     }
 
     @PutMapping("{id}")
-    public D update(@RequestBody @Validated({UpdateValidatorGroup.class}) D d, @PathVariable UUID id) {
+    public D update(@RequestBody D d, @PathVariable UUID id) {
         Optional<E> e = service.getById(id);
         d.setId(id);
         e.ifPresent(value -> BeanUtils.copyProperties(d, value));
