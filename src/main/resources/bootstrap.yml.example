@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: req-service
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        default_schema: inv
+  datasource:
+    url: jdbc:postgresql://localhost:5432/erp
+    username: postgres
+    password: 12345
+  jackson:
+    date-format: dd-MM-yyyy
+  kafka:
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      transaction-id-prefix: tx.
+    consumer:
+      properties:
+        isolation.level: read_committed
+#    listener:
+#      type: batch
+    bootstrap-servers: localhost:9092
+eureka:
+  client:
+    enabled: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+    healthcheck:
+      enabled: true
+  instance:
+    appname: req-service
+server:
+  port: 7001
