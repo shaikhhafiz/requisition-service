@@ -6,6 +6,7 @@ import com.hafiz.erp.requisition.validatorgroup.CreateValidatorGroup;
 import com.hafiz.erp.requisition.validatorgroup.UpdateValidatorGroup;
 import lombok.Data;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -16,13 +17,14 @@ import java.util.Set;
 public class ItemRequisitionDTO extends IdHolder {
     @NotBlank(groups = {CreateValidatorGroup.class})
     private String refNo;
-    //Not blank don't work on Date type variable
+    //Not blank don't work on Date type variable. Have to find out why this happen.
     @NotNull(groups = {CreateValidatorGroup.class})
     @ValidDateFormat(groups = {UpdateValidatorGroup.class, CreateValidatorGroup.class})
     private Date reqDate;
     @NotBlank(groups = {CreateValidatorGroup.class, UpdateValidatorGroup.class})
     private String status;
-    //TODO Fix validation on ItemRequisitionDetailDTO. no validation is working on this dto
+    //@Valid annotation is needed to work validator group in nested object
     @NotEmpty(groups = {CreateValidatorGroup.class})
+    @Valid
     private Set<ItemRequisitionDetailDTO> details;
 }
