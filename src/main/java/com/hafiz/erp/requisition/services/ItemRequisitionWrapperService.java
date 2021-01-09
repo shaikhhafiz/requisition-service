@@ -42,6 +42,7 @@ public class ItemRequisitionWrapperService {
     }
 
     public ItemRequisitionDTO updateRequisitionWithDetails(ItemRequisitionDTO reqBody, UUID reqId) {
+        //TODO implement update for details
         Optional<ItemRequisition> entity = service.getById(reqId);
         if(!entity.isPresent()) throw new RuntimeException("Entity not found with id: " + reqId);
         Optional<ItemRequisitionDTO> resBody = conversionUtility.getDto(
