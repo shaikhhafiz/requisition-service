@@ -14,6 +14,6 @@ public class ValidDateFormatValidator implements ConstraintValidator<ValidDateFo
   @Override
   public boolean isValid(Date value, ConstraintValidatorContext context) {
     //TODO Implement date format validation
-    return true;
+    return value != null;
   }
 }

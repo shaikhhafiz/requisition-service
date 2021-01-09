@@ -37,12 +37,16 @@ public abstract class CrudService<E extends BaseEntity> implements ICrudService<
 
     @Override
     public List<E> createAll(List<E> entities) {
-        entities = entities.stream().peek(e -> e.setId(null)).map(this::getEntity).map(Optional::get).collect(Collectors.toList());
+        entities = entities.stream()
+            .peek(e -> e.setId(null))
+            .map(this::getEntity)
+            .map(Optional::get)
+            .collect(Collectors.toList());
         return repository.saveAll(entities);
     }
 
     @Override
-    public Optional<E> update(Optional<E> entity) {
+    public E update(Optional<E> entity) {
         E updatedEntity = null;
         if(entity.isPresent()) {
             // TODO Through exception properly
@@ -50,7 +54,7 @@ public abstract class CrudService<E extends BaseEntity> implements ICrudService<
             updatedEntity = repository.save(entity.get());
         }
         assert updatedEntity != null;
-        return Optional.of(updatedEntity);
+        return updatedEntity;
     }
 
     @Override

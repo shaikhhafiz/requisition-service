@@ -11,6 +11,6 @@ public interface IItemRequisitionService {
   Optional<ItemRequisition> getById(UUID id);
   ItemRequisition create(Optional<ItemRequisition> entity);
   List<ItemRequisition> createAll(List<ItemRequisition> entities);
-  Optional<ItemRequisition> update(Optional<ItemRequisition> entity);
+  ItemRequisition update(Optional<ItemRequisition> entity);
   void deleteById(Optional<UUID> id);
 }

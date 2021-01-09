@@ -9,6 +9,6 @@ public interface ICrudService<E extends BaseEntity> {
     Optional<E> getById(UUID id);
     E create(Optional<E> e);
     List<E> createAll(List<E> e);
-    Optional<E> update(Optional<E> e) throws Exception;
+    E update(Optional<E> e);
     void deleteById(Optional<UUID> id);
 }
