@@ -18,6 +18,7 @@ public class PendingApprovalConsumer {
 
   @KafkaListener(id = "pendingApprovalGroup", topics = "pending-approval")
   public void listenPendingApproval(ApprovalDTO dto) {
+    System.out.println(dto.getSourceRecordId() + " of " + dto.getSourceRecord() + " consumed");
     Optional<ItemRequisition> requisition = requisitionService.getById(dto.getSourceRecordId());
     requisition.ifPresent(itemRequisition -> itemRequisition.setStatus(dto.getStatus()));
     requisitionService.update(requisition);

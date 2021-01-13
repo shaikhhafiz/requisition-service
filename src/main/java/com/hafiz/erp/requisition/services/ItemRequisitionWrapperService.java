@@ -41,6 +41,8 @@ public class ItemRequisitionWrapperService {
                     .map(Optional::get).collect(Collectors.toList())));
     }
 
+    //TODO Spring transactional is not working where kafka present. Have to find why this happening then do what to do
+//    @Transactional
     public ItemRequisitionDTO updateRequisitionWithDetails(ItemRequisitionDTO reqBody, UUID reqId) {
         //TODO implement update for details
         Optional<ItemRequisition> entity = service.getById(reqId);

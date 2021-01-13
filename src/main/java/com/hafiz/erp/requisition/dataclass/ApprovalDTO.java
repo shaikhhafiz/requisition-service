@@ -8,6 +8,6 @@ import java.util.UUID;
 @Data
 public class ApprovalDTO extends IdHolder {
   private UUID sourceRecordId;
-  private String source;
+  private String sourceRecord;
   private String status;
 }
